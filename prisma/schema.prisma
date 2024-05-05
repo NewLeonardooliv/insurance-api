@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model insurance {
+  id                 Int     @id @default(autoincrement())
+  age                String
+  gender             String
+  race               String
+  drivingExperience  String  @map("driving_experience")
+  education          String
+  income             String
+  creditScore        Float   @default(0) @map("credit_score")
+  vehicleOwnership   Boolean @map("vehicle_ownership")
+  vehicleYear        String  @map("vehicle_year")
+  married            Boolean
+  children           Boolean
+  postalCode         String  @map("postal_code")
+  annualMileage      Int     @default(0) @map("annual_mileage")
+  vehicleType        String  @map("vehicle_type")
+  speedingViolations Int     @map("speeding_violations")
+  duis               Int
+  pastAccidents      Int     @map("past_accidents")
+  outcome            Boolean
+
+  @@map("insurances")
+}
