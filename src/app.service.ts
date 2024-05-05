@@ -38,6 +38,10 @@ export class AppService {
       }
     });
 
+    if (!insurance) {
+      return 0;
+    } 
+
     return insurance.creditScore ?? 0;
   }
 
